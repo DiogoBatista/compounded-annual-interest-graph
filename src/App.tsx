@@ -133,14 +133,17 @@ export const App = () => {
             If you liked this small tool, check out my linkedin:
             <a onClick={() => {
               Event({ category: 'link', action: 'click', label: "linkedin_profile" })
-            }} href="https://www.linkedin.com/in/diogobvbatista/" target="_blank" rel="noopener noreferrer">Diogo Batista</a> <br />
+            }} href="https://www.linkedin.com/in/diogobvbatista/" target="_blank" rel="noopener noreferrer"> Diogo Batista</a> <br />
             From time to time I share my small tools and tests with you all 😎
           </p>
           <p>
             Check out the medium articles for this tool <br />
             <a onClick={() => {
-              Event({ category: 'link', action: 'click', label: "medium_post" })
+              Event({ category: 'link', action: 'click', label: "medium_post_1" })
             }} href="https://medium.com/@diogobv.batista/a-story-about-a-graph-part-1-77fc29977322" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 1)</a>
+            <a onClick={() => {
+              Event({ category: 'link', action: 'click', label: "medium_post_2" })
+            }} href="hhttps://medium.com/@diogobv.batista/a-story-about-a-graph-part-2-e70daa91c9a9" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 2)</a>
           </p>
         </div>
       </footer>
