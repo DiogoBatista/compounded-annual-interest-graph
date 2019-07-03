@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js';
 import './App.scss';
 
-import { YearlyCompounds, yearly_compounds, get_years } from './helpers/Calculations';
+import { YearlyCompounds, yearly_compounds, get_years } from './helpers/calculations';
+import { initGA, PageView, Event } from './helpers/tracking';
 
 export const App = () => {
   const [years, setYears] = useState(15);
   const [initialDeposit, setInitialDeposit] = useState(150);
   const [monthlyContributions, setMonthlyContributions] = useState(25);
   const [annualInterestRate, setAnnualInterestRate] = useState(7);
+
+  useEffect(() => {
+    initGA();
+    PageView();
+  }, []);
 
   useEffect(() => {
     const canvas = document.getElementById('chart') as HTMLCanvasElement;
@@ -55,17 +61,21 @@ export const App = () => {
   }, [years, initialDeposit, monthlyContributions, annualInterestRate]);
 
   const handleYearsChange = (years: number) => {
+    Event({ category: 'input', action: 'change', label: "handleYearsChange" })
     setYears(years);
   }
   const handleInitialDepositChange = (deposit: number) => {
+    Event({ category: 'input', action: 'change', label: "handleInitialDepositChange" })
     setInitialDeposit(deposit);
   }
 
   const handleMonthlyContributionsChange = (contribution: number) => {
+    Event({ category: 'input', action: 'change', label: "handleMonthlyContributionsChange" })
     setMonthlyContributions(contribution);
   }
 
   const handleAnnualInterestRateChange = (annualRate: number) => {
+    Event({ category: 'input', action: 'change', label: "handleAnnualInterestRateChange" })
     setAnnualInterestRate(annualRate)
   }
 
@@ -117,21 +127,25 @@ export const App = () => {
       <footer className="footer">
         <div className="content has-text-centered">
           <p>
-            Hello, my name is Diogo Batista and I'm a software developer.
+            Hello, my name is Diogo Batista.
           </p>
           <p>
-            If you like this small tool, check out my linkedin: <a href="https://www.linkedin.com/in/diogobvbatista/" target="_blank">Diogo Batista</a> <br />
-            I like to share my small tools and tests with you all 😎
+            If you liked this small tool, check out my linkedin:
+            <a onClick={() => {
+              Event({ category: 'link', action: 'click', label: "linkedin_profile" })
+            }} href="https://www.linkedin.com/in/diogobvbatista/" target="_blank" rel="noopener noreferrer">Diogo Batista</a> <br />
+            From time to time I share my small tools and tests with you all 😎
           </p>
           <p>
-            Check out the medium articles for this tool
-            <a href="https://www.linkedin.com/in/diogobvbatista/" target="_blank">Diogo Batista</a>
+            Check out the medium articles for this tool <br />
+            <a onClick={() => {
+              Event({ category: 'link', action: 'click', label: "medium_post" })
+            }} href="https://medium.com/@diogobv.batista/a-story-about-a-graph-part-1-77fc29977322" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 1)</a>
           </p>
         </div>
       </footer>
     </>
   )
 }
-
 
 export default App;
