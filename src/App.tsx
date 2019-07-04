@@ -17,6 +17,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
+    let chart: any;
     const canvas = document.getElementById('chart') as HTMLCanvasElement;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
 
@@ -31,7 +32,7 @@ export const App = () => {
 
     const labels: string[] = get_years(options.years);
 
-    new Chart(context, {
+    chart = new Chart(context, {
       type: 'line',
       data: {
         labels: labels,
@@ -58,6 +59,10 @@ export const App = () => {
         },
       }
     });
+
+    return () => {
+      chart.destroy()
+    };
   }, [years, initialDeposit, monthlyContributions, annualInterestRate]);
 
   const handleYearsChange = (years: number) => {
