@@ -148,7 +148,7 @@ export const App = () => {
             }} href="https://medium.com/@diogobv.batista/a-story-about-a-graph-part-1-77fc29977322" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 1)</a>
             <a onClick={() => {
               Event({ category: 'link', action: 'click', label: "medium_post_2" })
-            }} href="hhttps://medium.com/@diogobv.batista/a-story-about-a-graph-part-2-e70daa91c9a9" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 2)</a>
+            }} href="https://medium.com/@diogobv.batista/a-story-about-a-graph-part-2-e70daa91c9a9" target="_blank" rel="noopener noreferrer"> A story about a graph (Part 2)</a>
           </p>
         </div>
       </footer>
